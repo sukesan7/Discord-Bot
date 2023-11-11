@@ -36,6 +36,7 @@ logsID = 0
 # read bot is online, terminal view
 @client.event
 async def on_ready():
+    await client.change_presence(status=discord.Status.dnd, activity=discord.Game('Counter Strike 2'))
     print("PlanetCS Bot Online")
     print("-------------------")
 
@@ -167,7 +168,9 @@ async def queue(ctx, arg):
 # Embeds --------------------------------
 @client.command()
 async def embed(ctx):
-    embed = discord.Embed(title="Embed Title", url="https://google.com", description="description", color=0xff0000)
+    embed = discord.Embed(title="Embed Title", url=None, description="description", color=0xff0000)
+    embed.set_author(name=ctx.author.display_name, url=None, icon_url=ctx.message.author.avatar.url)
+    embed.set_thumbnail(url="https://www.adorama.com/alc/wp-content/uploads/2015/05/stories-HRX5WXFyB64-unsplash.jpg")
     await ctx.send(embed=embed)
 
 
